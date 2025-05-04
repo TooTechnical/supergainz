@@ -1,0 +1,10 @@
+.env
+*.sqlite3
+__pycache__/
+env/
+staticfiles/
+media/
+Superuser username: tradingmaster2025
+Super Email: dillon@supergainz.pro
+Superuser password: wolfofwallstreet2013
+
