@@ -1,0 +1,17 @@
+asgiref==3.8.1
+certifi==2025.4.26
+charset-normalizer==3.4.1
+Django==5.2
+django-allauth==65.7.0
+django-crispy-forms==2.4
+gunicorn==23.0.0
+idna==3.10
+mysqlclient==2.2.7
+packaging==25.0
+python-dotenv==1.1.0
+requests==2.32.3
+sqlparse==0.5.3
+stripe==12.0.1
+typing_extensions==4.13.2
+urllib3==2.4.0
+whitenoise==6.9.0

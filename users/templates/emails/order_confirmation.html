@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Confirmation</title>
+</head>
+<body>
+    <h2>Thank you, {{ user.username }}!</h2>
+    <p>Your purchase from SuperGainz has been confirmed. Please find the attached files for your purchased indicators:</p>
+    <ul>
+        {% for product in products %}
+        <li>{{ product.name }}</li>
+        {% endfor %}
+    </ul>
+    <p>If you have any questions, reply to this email or contact our support team.</p>
+</body>
+</html>

@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}Product List{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Available Products</h2>
+<div class="row">
+    {% for product in products %}
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">{{ product.description }}</p>
+                <p class="card-text"><strong>${{ product.price }}</strong></p>
+                <form action="{% url 'add_to_cart' product.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button>
+                </form>
+                <button class="btn btn-sm btn-success checkout-button mt-2" data-product-id="{{ product.id }}">
+                    Buy Now
+                </button>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+const stripe = Stripe("{{ STRIPE_PUBLISHABLE_KEY }}");
+
+document.querySelectorAll('.checkout-button').forEach(button => {
+    button.addEventListener('click', function() {
+        const productId = this.dataset.productId;
+
+        fetch('/payments/create-checkout-session/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({ product_id: productId })
+        })
+        .then(response => response.json())
+        .then(session => {
+            if (session.id) {
+                return stripe.redirectToCheckout({ sessionId: session.id });
+            } else {
+                alert('Failed to create Stripe session.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred.');
+        });
+    });
+});
+</script>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Sign Out{% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1 class="display-5 fw-bold">You Have Signed Out</h1>
+    <p class="lead">Thank you for using SuperGainz Trading Tools.</p>
+
+    <a href="{% url 'landing_page' %}" class="btn btn-primary mt-3">Return to Home</a>
+    <a href="{% url 'account_login' %}" class="btn btn-outline-secondary mt-3">Log In Again</a>
+</div>
+{% endblock %}
