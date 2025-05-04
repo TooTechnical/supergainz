@@ -1,1 +1,1 @@
-web: gunicorn supergainz.wsgi --log-file -
+web: gunicorn supergainz_pro.wsgi
