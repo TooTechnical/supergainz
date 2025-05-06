@@ -66,10 +66,10 @@ def checkout_cart(request):
 
     session = stripe.checkout.Session.create(
         payment_method_types=['card'],
-        line_items=line_items,
         mode='payment',
-        success_url=request.build_absolute_uri('/payments/success/'),
-        cancel_url=request.build_absolute_uri('/payments/cancel/'),
+        line_items=line_items,
+        success_url='https://supergainz-9cba26bd3cfd.herokuapp.com/success',
+        cancel_url='https://supergainz-9cba26bd3cfd.herokuapp.com/cancel',
     )
     return redirect(session.url)
 

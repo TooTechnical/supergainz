@@ -57,6 +57,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 ]
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_EMAIL_REQUIRED = False  # or True, if you still want users to enter an email but not verify
+
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -148,12 +152,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_your_fallback_key_here')
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY', 'pk_test_your_fallback_key_here')
 STRIPE_PUBLISHABLE_KEY = 'pk_live_51HZ8dDJj9uiNoZRh0YjTcLw72FuQZ3yyQtqsROOKktHgymxejKbx36TNEUxTTJYiga034xvaqV9yZNCW8kZnWY4C00i5PpSSLD'
-
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.your-email-provider.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@example.com'
-EMAIL_HOST_PASSWORD = 'your-email-password'
-DEFAULT_FROM_EMAIL = 'your-email@example.com'
