@@ -10,14 +10,30 @@
             <div class="card-body">
                 <h5 class="card-title">{{ product.name }}</h5>
                 <p class="card-text">{{ product.description }}</p>
-                <p class="card-text"><strong>${{ product.price }}</strong></p>
-                <form action="{% url 'add_to_cart' product.id %}" method="post" class="d-inline">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button>
-                </form>
-                <button class="btn btn-sm btn-success checkout-button mt-2" data-product-id="{{ product.id }}">
-                    Buy Now
-                </button>
+                <p class="card-text">
+                    <strong>
+                        {% if product.price > 0 %}
+                            ${{ product.price }}
+                        {% else %}
+                            FREE
+                        {% endif %}
+                    </strong>
+                </p>
+
+                {% if product.price > 0 %}
+                    <!-- ✅ Add to Cart -->
+                    <form action="{% url 'add_to_cart' product.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-sm btn-primary">Add to Cart</button>
+                    </form>
+
+                
+                {% else %}
+                    <!-- ✅ Free download links -->
+                    <a href="{{ product.file_pdf.url }}" class="btn btn-sm btn-primary">Download PDF</a>
+                    {% if product.file_doc %}
+                    {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>

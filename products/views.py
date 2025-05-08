@@ -7,6 +7,7 @@ from .models import Product
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+
 def product_list(request):
     products = Product.objects.all()
     return render(request, 'products/product_list.html', {'products': products})
@@ -80,3 +81,15 @@ def payment_success(request):
 
 def payment_cancel(request):
     return render(request, 'payments/cancel.html')
+
+
+def free_product_download(request, product_id):
+    """View to let user download a free product"""
+    product = get_object_or_404(Product, id=product_id, is_free=True)
+    return render(request, 'products/free_product_download.html', {'product': product})
+
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    return render(request, 'products/product_detail.html', {'product': product})
+

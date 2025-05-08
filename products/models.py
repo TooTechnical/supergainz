@@ -4,6 +4,7 @@ from payments.models import Order
 from django.utils import timezone
 from datetime import timedelta
 
+
 class IndicatorDownload(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     file_url = models.URLField()
@@ -27,15 +28,18 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=8, decimal_places=2)
+    is_free = models.BooleanField(default=False)  #
     file_doc = models.FileField(upload_to='products/docs/', null=True, blank=True)
     file_pdf = models.FileField(upload_to='products/pdfs/', null=True, blank=True)
 
     def __str__(self):
         return self.name
 
+
     def get_absolute_url(self):
         return reverse('product_detail', args=[str(self.id)])
 
+    
     def get_files(self):
         """Return a list of attached file paths (for emailing or downloads)."""
         files = []
@@ -48,3 +52,17 @@ class Product(models.Model):
     class Meta:
         verbose_name = "Product"
         verbose_name_plural = "Products"
+
+
+class Lead(models.Model):
+    email = models.EmailField()
+    first_name = models.CharField(max_length=100, blank=True)
+    product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.email} - {self.product.name if self.product else 'No product'}"
+
+    class Meta:
+        verbose_name = "Lead"
+        verbose_name_plural = "Leads"

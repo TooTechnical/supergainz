@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}Free Download{% endblock %}
+
+{% block content %}
+<h2>Thanks for choosing {{ product.name }}!</h2>{% if product.file_pdf %}
+    <a href="{{ product.file_pdf.url }}" class="btn btn-primary">Download PDF</a>
+    <script>
+        console.log('PDF download link generated');
+    </script>
+{% endif %}
+
+<a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Products</a>
+
+<!-- Optional: Auto-download -->
+{% if product.file_pdf %}
+<script>
+    window.onload = function() {
+        console.log('Auto-downloading PDF');
+        window.location.href = "{{ product.file_pdf.url }}";
+    }
+</script>
+{% endif %}
+<p>Download your free indicator below:</p>
+
+{% if product.file_pdf %}
+    <a href="{{ product.file_pdf.url }}" class="btn btn-primary">Download PDF</a>
+{% endif %}
+
+<a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Products</a>
+
+<!-- Optional: Auto-download -->
+{% if product.file_pdf %}
+<script>
+    window.onload = function() {
+        window.location.href = "{{ product.file_pdf.url }}";
+    }
+</script>
+{% endif %}
+{% endblock %}

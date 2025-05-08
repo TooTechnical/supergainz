@@ -152,3 +152,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_your_fallback_key_here')
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY', 'pk_test_your_fallback_key_here')
 STRIPE_PUBLISHABLE_KEY = 'pk_live_51HZ8dDJj9uiNoZRh0YjTcLw72FuQZ3yyQtqsROOKktHgymxejKbx36TNEUxTTJYiga034xvaqV9yZNCW8kZnWY4C00i5PpSSLD'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+
