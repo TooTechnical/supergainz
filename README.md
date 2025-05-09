@@ -2,6 +2,11 @@
 
 **[Live Site → https://supergainz-9cba26bd3cfd.herokuapp.com/](https://supergainz-9cba26bd3cfd.herokuapp.com/)**
 
+**[Admin Site https://supergainz-9cba26bd3cfd.herokuapp.com/admin/](https://supergainz-9cba26bd3cfd.herokuapp.com/admin/)**
+
+
+
+
 SuperGainz is a dynamic web platform for **traders** to **download free indicators** or **purchase premium trading tools.** Users can register, log in, add items to a cart, check out with Stripe, and download PDFs directly from the site.
 
 Built with **Django 5.2** and deployed to **Heroku**, it features a design inspired by professional trading websites like **AlgoGainz.**
