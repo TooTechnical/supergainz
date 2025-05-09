@@ -63,6 +63,7 @@ ACCOUNT_EMAIL_REQUIRED = False  # or True, if you still want users to enter an e
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     "allauth.account.middleware.AccountMiddleware",
     'django.middleware.common.CommonMiddleware',
