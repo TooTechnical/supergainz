@@ -23,7 +23,8 @@
 <p>Download your free indicator below:</p>
 
 {% if product.file_pdf %}
-    <a href="{{ product.file_pdf.url }}" class="btn btn-primary">Download PDF</a>
+<a href="{% static 'products/pdfs/FREE_SUPERGAINZ_INDICATOR.pdf' %}" download>Download Free Indicator</a>
+
 {% endif %}
 
 <a href="{% url 'product_list' %}" class="btn btn-secondary">Back to Products</a>
