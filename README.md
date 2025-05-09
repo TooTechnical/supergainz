@@ -41,10 +41,96 @@ Built with **Django 5.2** and deployed to **Heroku**, it features a design inspi
 
 ---
 
-## 💻 Local Setup
 
-1. **Clone the repo:**
 
-```bash
-git clone https://github.com/TooTechnical/supergainz.git
-cd supergainz
+## 🐞 Issues & Solutions
+
+1️⃣ Static files (CSS/JS) not loading on Heroku
+Fix:
+
+Added WhiteNoiseMiddleware
+
+Confirmed STATIC_ROOT and STATIC_URL set correctly
+
+Ran collectstatic
+
+Confirmed /staticfiles/ populated
+
+---
+
+##  2️⃣ Free Indicator PDF 404 on Heroku
+Cause: Heroku doesn't serve /media/ like local dev.
+
+Fix:
+
+✅ Moved PDF into /static/products/pdfs
+
+✅ Used {% static %} in template
+
+---
+
+## 5️⃣ Stripe cancel URL returned 404
+Fix:
+
+Added cancel route:
+path('cancel/', views.payment_cancel, name='payment_cancel'),
+
+
+## 
+
+6️⃣ Admin clicking product → NoReverseMatch
+Fix:
+
+✅ Removed/adjusted get_absolute_url in Product model
+✅ Or defined product_detail view/URL.
+
+## 
+
+📝 Admin Panel
+Accessible at /admin/ → manage:
+
+Products
+
+Users
+
+Indicator files
+
+Note: Upload PDFs manually into /static/products/pdfs/ → run collectstatic.
+
+
+## 
+
+🚩 Known Limitations
+Free PDFs are static links (not uploaded via admin)
+
+Updating a free indicator PDF requires manual file replacement
+
+Staticfiles need collectstatic on every update
+
+## 
+
+❤️ Credits
+Created by Dillon Malone
+
+## 
+
+
+
+📢 Summary
+SuperGainz is a professional-grade Django web app for traders, offering:
+
+✅ Free and paid indicators
+✅ Stripe checkout integration
+✅ Cart functionality
+✅ Robust deployment on Heroku
+
+
+
+## 
+
+
+## 
+
+
+
+## 
