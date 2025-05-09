@@ -1,4 +1,4 @@
-# 🏋️‍♂️ SuperGainz
+# SuperGainz
 
 **[Live Site → https://supergainz-9cba26bd3cfd.herokuapp.com/](https://supergainz-9cba26bd3cfd.herokuapp.com/)**
 
