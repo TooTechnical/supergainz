@@ -106,12 +106,7 @@ Note: Upload PDFs manually into /static/products/pdfs/ → run collectstatic.
 ## 
 
 🚩 Known Limitations
-Free PDFs are static links (not uploaded via admin)
-
-Updating a free indicator PDF requires manual file replacement
-
-Staticfiles need collectstatic on every update
-
+Free PDFs are uploaded via the Django back-end
 ## 
 
 ❤️ Credits
@@ -131,11 +126,4 @@ SuperGainz is a professional-grade Django web app for traders, offering:
 
 
 
-## 
 
-
-## 
-
-
-
-## 
